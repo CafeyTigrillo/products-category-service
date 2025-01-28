@@ -1,59 +1,59 @@
 # Products Category Service
 
-Este proyecto es un microservicio desarrollado con Spring Boot que permite la gestión de productos dentro de categorías en una tienda online. El servicio proporciona una API RESTful para obtener los productos de una categoría específica mediante su `id_category`.
+This project is a microservice developed with Spring Boot that allows for the management of products within categories in an online store. The service provides a RESTful API to retrieve products of a specific category by its `id_category`.
 
-## Requisitos
+## Requirements
 
-- Java 17 o superior
+- Java 17 or higher
 - Maven
 - Spring Boot
-- Base de datos (se requiere configurar la conexión a la base de datos en el archivo `application.properties` o `application.yml`)
+- Database (database connection configuration required in `application.properties` or `application.yml`)
 
-## Descripción
+## Description
 
-El microservicio permite la interacción con una base de datos para realizar las siguientes operaciones:
+The microservice interacts with a database to perform the following operations:
 
-- **Obtener productos por categoría**: Recibe una solicitud GET a `/products/{id_category}` y devuelve todos los productos pertenecientes a una categoría específica.
+- **Get products by category**: Receives a GET request at `/products/{id_category}` and returns all products belonging to a specific category.
 
-## Estructura del Proyecto
+## Project Structure
 
-El proyecto sigue una estructura basada en la arquitectura de capas, con las siguientes partes principales:
+The project follows a layered architecture structure, with the following main parts:
 
-- **Controller**: Define los endpoints de la API. La clase `ProductController` expone el endpoint que permite obtener los productos por categoría.
-- **Model**: Representa la entidad `Product` con los atributos necesarios como `id_product`, `name`, `description`, `price`, `id_category`, y `availability`.
-- **Repository**: Implementa el acceso a la base de datos mediante Spring Data JPA. La interfaz `IProductRepository` define el método para consultar los productos por `id_category`.
-- **Service**: Contiene la lógica de negocio. La clase `ProductService` implementa la interfaz `IProductService` y utiliza el repositorio para obtener los productos de la base de datos.
+- **Controller**: Defines the API endpoints. The `ProductController` class exposes the endpoint that allows retrieving products by category.
+- **Model**: Represents the `Product` entity with necessary attributes such as `id_product`, `name`, `description`, `price`, `id_category`, and `availability`.
+- **Repository**: Implements database access using Spring Data JPA. The `IProductRepository` interface defines the method to query products by `id_category`.
+- **Service**: Contains the business logic. The `ProductService` class implements the `IProductService` interface and uses the repository to get products from the database.
 
 ## API Endpoints
 
 ### GET `/products/{id_category}`
 
-**Descripción**: Obtiene todos los productos que pertenecen a una categoría específica.
+**Description**: Retrieves all products belonging to a specific category.
 
-**Parámetros**:
-- `id_category` (Path Parameter): ID de la categoría de los productos a obtener.
+**Parameters**:
+- `id_category` (Path Parameter): ID of the category of products to retrieve.
 
-**Respuesta**:
-- **Código de estado 200**: Devuelve una lista de productos pertenecientes a la categoría especificada.
-- **Código de estado 404**: Si no se encuentran productos para la categoría proporcionada.
-- **Código de estado 500**: En caso de error en el servidor.
+**Response**:
+- **Status Code 200**: Returns a list of products belonging to the specified category.
+- **Status Code 404**: If no products are found for the provided category.
+- **Status Code 500**: In case of a server error.
 
-**Ejemplo de respuesta**:
+**Example Response**:
 
 ```json
 [
   {
     "id_product": 1,
-    "name": "Producto 1",
-    "description": "Descripción del producto 1",
+    "name": "Product 1",
+    "description": "Description of product 1",
     "price": 100.0,
     "id_category": 1,
     "availability": true
   },
   {
     "id_product": 2,
-    "name": "Producto 2",
-    "description": "Descripción del producto 2",
+    "name": "Product 2",
+    "description": "Description of product 2",
     "price": 150.0,
     "id_category": 1,
     "availability": true
