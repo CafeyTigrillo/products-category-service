@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@Tag(name = "Product", description = "Product management APIs")
+@Tag(name = "Product", description = "Restaurant product management APIs")
 public class ProductController {
 
     @Autowired
@@ -25,12 +25,12 @@ public class ProductController {
 
     @Operation(
             summary = "Get products by category ID",
-            description = "Retrieve all products that belong to a specific category identified by its ID"
+            description = "Retrieve all food products that belong to a specific category in the restaurant menu, identified by its ID."
     )
     @ApiResponses({
             @ApiResponse(
                     responseCode = "200",
-                    description = "Found the products",
+                    description = "Successfully retrieved the products",
                     content = @Content(
                             mediaType = "application/json",
                             schema = @Schema(implementation = Product.class)
@@ -49,7 +49,7 @@ public class ProductController {
     })
     @GetMapping("/products/{id_category}")
     public List<Product> getProductsCategoryById(
-            @Parameter(description = "ID of the category to retrieve products for")
+            @Parameter(description = "Unique identifier of the category to retrieve food products for", example = "2")
             @PathVariable Long id_category
     ) {
         return productService.getProductsCategoryById(id_category);

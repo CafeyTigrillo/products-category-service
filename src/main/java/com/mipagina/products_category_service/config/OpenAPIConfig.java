@@ -13,19 +13,19 @@ public class OpenAPIConfig {
     @Bean
     public OpenAPI myOpenAPI() {
         Contact contact = new Contact();
-        contact.setEmail("youremail@example.com");
-        contact.setName("API Support");
-        contact.setUrl("https://www.yourwebsite.com");
+        contact.setEmail("support@restaurantapi.com");
+        contact.setName("Restaurant API Support");
+        contact.setUrl("https://www.restaurantapi.com");
 
         License license = new License()
                 .name("Apache License 2.0")
                 .url("https://www.apache.org/licenses/LICENSE-2.0");
 
         Info info = new Info()
-                .title("Products Category Management API")
+                .title("Restaurant Products Category Management API")
                 .version("1.0")
                 .contact(contact)
-                .description("This API exposes endpoints to manage products by categories.")
+                .description("This API allows managing restaurant products by categories, enabling efficient categorization and retrieval of food items.")
                 .license(license);
 
         return new OpenAPI().info(info);
