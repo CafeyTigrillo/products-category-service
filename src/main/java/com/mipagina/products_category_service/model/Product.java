@@ -5,32 +5,29 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 
 @Entity
-@Schema(description = "Product entity representing a product in the system")
+@Schema(description = "Represents a food product available in the restaurant menu")
 public class Product {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Schema(description = "Unique identifier of the product", example = "1")
+    @Schema(description = "Unique identifier of the food product", example = "1")
     private Long id_product;
 
-    @Schema(description = "Name of the product", example = "Margherita Pizza")
+    @Schema(description = "Name of the food product", example = "Margherita Pizza")
     private String name;
 
-    @Schema(description = "Detailed description of the product", example = "Classic pizza with fresh tomatoes, mozzarella, and basil")
+    @Schema(description = "Detailed description of the food item", example = "Classic Italian pizza with fresh tomatoes, mozzarella cheese, and basil")
     private String description;
 
-    @Schema(description = "Price of the product", example = "15.99")
+    @Schema(description = "Price of the food product in USD", example = "15.99")
     private Double price;
 
-    @Schema(description = "Category ID to which the product belongs", example = "2")
+    @Schema(description = "Category ID indicating the classification of the food product", example = "2")
     private Long id_category;
 
-    @Schema(description = "Product availability status", example = "true")
+    @Schema(description = "Indicates whether the food product is available for order", example = "true")
     private Boolean availability;
 
     public Long getId_product() {
